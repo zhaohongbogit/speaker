@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    var TAG: String = MainActivity::class.java.simpleName
+    val TAG: String = MainActivity::class.java.simpleName
 
     val mSpeechSynthesizer: SpeechSynthesizer = SpeechSynthesizer.getInstance()
     var message: String = "";
@@ -63,37 +64,37 @@ class MainActivity : AppCompatActivity() {
     inner class SpeechSysListener : SpeechSynthesizerListener {
         override fun onSynthesizeStart(p0: String?) {
             //播放开始，每句播放开始都会回调
-//            Log.d(this@MainActivity.TAG, "onSynthesizeStart")
+            Log.d(TAG, "播放开始，每句播放开始都会回调")
         }
 
         override fun onSpeechFinish(p0: String?) {
             //播放结束回调
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "播放结束回调")
         }
 
         override fun onSpeechProgressChanged(p0: String?, p1: Int) {
             //播放进度回调接口，分多次回调
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "播放进度回调接口，分多次回调")
         }
 
         override fun onSynthesizeFinish(p0: String?) {
             //合成正常结束，每句合成正常结束都会回调，如果过程中出错，则回调onError，不再回调此接口
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "合成正常结束，每句合成正常结束都会回调，如果过程中出错，则回调onError，不再回调此接口")
         }
 
         override fun onSpeechStart(p0: String?) {
             //播放开始
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "播放开始")
         }
 
         override fun onSynthesizeDataArrived(p0: String?, p1: ByteArray?, p2: Int) {
             //语音流 16K采样率 16bits编码 单声道 。合成进度
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "语音流 16K采样率 16bits编码 单声道 。合成进度")
         }
 
         override fun onError(p0: String?, p1: SpeechError?) {
             //当合成或者播放过程中出错时回调此接口
-//            Log.d(this@MainActivity.TAG, "onSpeechFinish")
+            Log.d(TAG, "当合成或者播放过程中出错时回调此接口")
         }
 
     }
